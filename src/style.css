@@ -1,3 +1,93 @@
+:root {
+  --background-color: #f9f7fe;
+  --main-color: #885df1;
+  --font-main: "Roboto", sans-serif;
+}
+
+body {
+  background: var(--background-color);
+  color: black;
+  font-family: var(--font-main);
+  margin: 8px;
+}
+
+.container {
+  background: white;
+  max-width: 600px;
+  border-radius: 16px;
+  margin: 50px auto;
+  padding: 30px;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--background-color);
+}
+
+.search-form {
+  background-color: var(--background-color);
+  font-size: 16px;
+  padding: 15px 20px;
+  border-radius: 6px;
+  border: none;
+}
+
+.submit-form {
+  background: #885df1;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  padding: 0px 30px;
+  margin-left: 10px;
+}
+
 h1 {
-  color: blueviolet;
+  font-size: 38px;
+  font-weight: bold;
+  padding-top: 15px;
+  margin: 20px 0px;
+}
+
+p {
+  font-size: 16px;
+  color: rgba(39, 33, 66, 0.4);
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.color-data {
+  color: #f65282;
+  font-weight: bold;
+  opacity: 100%;
+}
+
+.icon-temp {
+  width: 80px;
+  margin-top: 25px;
+}
+
+.temperature {
+  font-size: 88px;
+  font-weight: bold;
+}
+
+.unit {
+  font-size: 28px;
+  margin-top: 22px;
+}
+
+footer {
+  border-top: 1px solid var(--background-color);
+  padding-top: 40px;
+  font-size: 11px;
+  opacity: 70%;
+  text-align: center;
+}
+
+footer a {
+  color: var(--main-color);
 }
