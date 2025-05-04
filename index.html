@@ -15,23 +15,26 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <title>Weather</title>
   </head>
   <body>
     <div class="container">
       <header>
-        <form>
+        <form id="search-form">
           <input
             type="search"
             class="col-9 search-form"
             placeholder="Enter a city.."
             required
+            id="input-element"
           />
           <input
             type="submit"
             class="col-3 submit-form text-center"
             value="Search"
+            id="submit-element"
           />
         </form>
       </header>
@@ -39,18 +42,18 @@
       <main>
         <div class="d-flex justify-content-between">
           <div>
-            <h1>Kyiv</h1>
+            <h1></h1>
             <p>
-              Wednesday 19:20, scattered clouds <br />
-              Humidity: <span class="color-data">36%</span>, Wind:
-              <span class="color-data">0.37км/г</span>
+              <span id="date"></span>, <span id="description"></span> <br />
+              Humidity:
+              <span class="color-data"><span id="humidity"></span>%</span>,
+              Wind:
+              <span class="color-data"><span id="wind"></span>km/h</span>
             </p>
           </div>
           <div class="d-flex">
-            <div>
-              <img src="img/clear-sky-day.png" class="icon-temp" alt="" />
-            </div>
-            <div class="temperature">23</div>
+            <div id="icon"></div>
+            <div class="temperature" id="temperature"></div>
             <div class="unit">°C</div>
           </div>
         </div>
@@ -97,5 +100,6 @@
         та розміщений на Netfly
       </footer>
     </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
