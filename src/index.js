@@ -40,6 +40,7 @@ function refreshWeather(response) {
   dateWeather.innerHTML = curentDate(fullDate);
   let iconWeather = document.querySelector("#icon");
   iconWeather.innerHTML = `<img src="${response.data.condition.icon_url}" class="icon-temp" alt="" />`;
+  getForecast(response.data.city);
 }
 
 function searchCity(city) {
@@ -58,3 +59,22 @@ let formCity = document.querySelector("#search-form");
 formCity.addEventListener("submit", cityToSearch);
 
 searchCity("Lviv");
+
+function getForecast(city) {
+  let week = ["sun", "mon", "tue", "wed", "thu"];
+  forecastHtml = "";
+  week.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+<div class="text-center">
+            <div class="text-muted">${day}</div>
+            <img src="img/clear-sky-day.png" style="width: 88px" />
+            <div><span class="color-data">26° 15°</span></div>
+          </div>
+          
+`;
+  });
+  let forecastWeather = document.querySelector("#forecast");
+  forecastWeather.innerHTML = forecastHtml;
+}
