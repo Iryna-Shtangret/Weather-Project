@@ -24,7 +24,6 @@ function curentDate(date) {
 }
 
 function refreshWeather(response) {
-  console.log(response);
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.city;
   let descriptionWeather = document.querySelector("#description");
@@ -55,26 +54,42 @@ function cityToSearch(event) {
   searchCity(newCity.value);
 }
 
-let formCity = document.querySelector("#search-form");
-formCity.addEventListener("submit", cityToSearch);
-
-searchCity("Lviv");
-
 function getForecast(city) {
-  let week = ["sun", "mon", "tue", "wed", "thu"];
+  let apikey = "dboef2d023e8b54bffat4b762d81356c";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apikey}`;
+  axios.get(apiUrl).then(showForecast);
+}
+
+function formatDay(response) {
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let fullDate = new Date(response.time * 1000);
+  let day = fullDate.getDay();
+  return `${days[day]}`;
+}
+
+function showForecast(response) {
   forecastHtml = "";
-  week.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
-<div class="text-center">
-            <div class="text-muted">${day}</div>
-            <img src="img/clear-sky-day.png" style="width: 88px" />
-            <div><span class="color-data">26° 15°</span></div>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
+          <div class="text-center">
+            <div class="text-muted">${formatDay(day)}</div>
+            <img src="${day.condition.icon_url}" style="width: 88px" />
+            <div><span class="color-data">${Math.round(
+              day.temperature.maximum
+            )}° ${Math.round(day.temperature.minimum)}°</span></div>
           </div>
           
 `;
+    }
   });
   let forecastWeather = document.querySelector("#forecast");
   forecastWeather.innerHTML = forecastHtml;
 }
+
+let formCity = document.querySelector("#search-form");
+formCity.addEventListener("submit", cityToSearch);
+
+searchCity("Kyiv");
